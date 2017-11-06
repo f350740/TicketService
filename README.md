@@ -1,5 +1,4 @@
 # TicketService
-Reserve tickets.
 
 # Maven Commands:
 Assuming current directory is at this repository (where pom.xml is present).
