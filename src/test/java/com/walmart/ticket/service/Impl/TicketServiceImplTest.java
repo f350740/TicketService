@@ -1,6 +1,3 @@
-/**
- * Created by Darpan Shah Jul 19, 2017
- */
 package com.walmart.ticket.service.Impl;
 
 import static org.junit.Assert.assertNotNull;
@@ -15,7 +12,6 @@ import org.junit.Test;
 import com.walmart.ticket.model.SeatHold;
 import com.walmart.ticket.model.Venue;
 /**
- * @author DARPAN
  *
  */
 public class TicketServiceImplTest {
@@ -47,52 +43,52 @@ public class TicketServiceImplTest {
 		service = new TicketServiceImpl(new Venue(2,3), second);
 		no = service.numSeatsAvailable();
 		assert(no == (2*3));
-		service.findAndHoldSeats(2, "darpan@dp.com");
+		service.findAndHoldSeats(2, "john@doe.com");
 		no = service.numSeatsAvailable();
 		assert(no == ((2*3)-2));
 		Thread.sleep(wait); // default expire time is 5s. prior hold should be gone. (Timing is check on the scale of seconds)
 		System.out.println("After waiting: " + service.numSeatsAvailable());
 		assert((2*3) == service.numSeatsAvailable());
-		service.findAndHoldSeats((2*3), "darpan@dp.com");
+		service.findAndHoldSeats((2*3), "john@doe.com");
 		assert(0 == service.numSeatsAvailable());
 		Thread.sleep(wait); // default expire time is 5s. prior hold should be gone.
 		assert((2*3) == service.numSeatsAvailable());
-		SeatHold sh = service.findAndHoldSeats((2*3), "darpan@dp.com");
+		SeatHold sh = service.findAndHoldSeats((2*3), "john@doe.com");
 		no = service.numSeatsAvailable();
-		service.reserveSeats(sh.getId(), "darpan@dp.com");
+		service.reserveSeats(sh.getId(), "john@doe.com");
 		assert(no == service.numSeatsAvailable()); // reserving seats should not change no of seats. (assuming we don`t pass expiry)
 		System.gc();
 		service = new TicketServiceImpl(new Venue(2,3), second);
-		sh = service.findAndHoldSeats((2*3), "darpan@dp.com");
+		sh = service.findAndHoldSeats((2*3), "john@doe.com");
 		no = service.numSeatsAvailable();
 		Thread.sleep(wait);
-		service.reserveSeats(sh.getId(), "darpan@dp.com");
+		service.reserveSeats(sh.getId(), "john@doe.com");
 		assert((no + sh.getSeatsHeld().size()) == service.numSeatsAvailable()); // After expiration, all held seats should be available.
 	}
 	
 	@Test
 	public void findAndHoldSeats() throws InterruptedException{
-		SeatHold s1 = service.findAndHoldSeats(1, "xyz@abc.com");
+		SeatHold s1 = service.findAndHoldSeats(1, "aaa@zzz.com");
 		assertNotNull(s1);
 		assert(1 == s1.getSeatsHeld().size());
-		s1 = service.findAndHoldSeats(1, "xyz@abc.com");
+		s1 = service.findAndHoldSeats(1, "aaa@zzz.com");
 		assert(null == s1);
 		Thread.sleep(wait);
-		s1 = service.findAndHoldSeats(1, "xyz@abc.com");
+		s1 = service.findAndHoldSeats(1, "aaa@zzz.com");
 		assertNotNull(s1);
 		assert(1 == s1.getSeatsHeld().size());
 		Thread.sleep(wait);
-		s1 = service.findAndHoldSeats(2, "xyz@abc.com");
+		s1 = service.findAndHoldSeats(2, "aaa@zzz.com");
 		assert(null == s1);
 	}
 	
 	@Test
 	public void reserveSeats() throws InterruptedException{
-		SeatHold s1 = service.findAndHoldSeats(1, "xyz@abc.com");
-		String conf = service.reserveSeats(s1.getId(), "xyz@abc.com");
+		SeatHold s1 = service.findAndHoldSeats(1, "aaa@zzz.com");
+		String conf = service.reserveSeats(s1.getId(), "aaa@zzz.com");
 		assertNotNull(conf);
 		assertTrue(conf.contains("reserved!"));
-		conf = service.reserveSeats(0, "xyz@abc.com");
+		conf = service.reserveSeats(0, "aaa@zzz.com");
 		assert(null == conf);
 	}
 	

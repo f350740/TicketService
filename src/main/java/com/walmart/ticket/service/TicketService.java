@@ -3,7 +3,6 @@ package com.walmart.ticket.service;
 import com.walmart.ticket.model.SeatHold;
 /**
  * 
- * @author Darpan Shah
  *
  */
 public interface TicketService {

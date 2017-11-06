@@ -1,7 +1,6 @@
 package com.walmart.ticket.model;
 /**
  * 
- * @author Darpan Shah
  *
  */
 public class Customer {
@@ -38,12 +37,10 @@ public class Customer {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		//builder.append("(");
 		if (Name != null)
 			builder.append(Name).append(", ");
 		if (email != null)
 			builder.append(email);
-		//builder.append(")");
 		return builder.toString();
 	}
 	

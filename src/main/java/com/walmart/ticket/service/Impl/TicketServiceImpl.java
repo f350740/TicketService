@@ -45,8 +45,6 @@ public class TicketServiceImpl implements TicketService {
 			SeatHold tempSH = entry.getValue();
 			long now = Instant.now().getEpochSecond();
 			if ((now - tempSH.getCreatedAt().getEpochSecond()) > this.seconds) {
-//				System.out.println("\t()now = " + now + " sec.");
-//				System.out.println("\t()Created at = " + tempSH.getCreatedAt().getEpochSecond() + " sec.");
 				updateStatus(tempSH.getSeatsHeld(), STATUS.AVAILABLE);
 				this.available += tempSH.getSeatsHeld().size();
 				it.remove();
@@ -59,8 +57,6 @@ public class TicketServiceImpl implements TicketService {
 		if(tempSH!=null){
 			long now = Instant.now().getEpochSecond();
 			if((now - tempSH.getCreatedAt().getEpochSecond())> this.seconds){
-//				System.out.println("\tnow = " + now + " sec.");
-//				System.out.println("\tCreated at = " + tempSH.getCreatedAt().getEpochSecond() + " sec.");
 				updateStatus(tempSH.getSeatsHeld(), STATUS.AVAILABLE);
 				this.available += tempSH.getSeatsHeld().size();
 				seatHoldMapper.remove(seatHoldId);
@@ -133,7 +129,6 @@ public class TicketServiceImpl implements TicketService {
 			return "cannot verify customer. Please request reservation with correct customer email.";
 		}
 		updateStatus(seatHold.getSeatsHeld(), STATUS.RESERVED);
-//		this.available -= seatHold.getSeatsHeld().size();
 		String result =  Helper.reservationCode(seatHold);
 		seatHoldMapper.remove(seatHoldId);
 		return result;

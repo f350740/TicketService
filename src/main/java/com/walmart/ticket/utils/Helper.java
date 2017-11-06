@@ -1,6 +1,3 @@
-/**
- * Created by Darpan Shah Jul 19, 2017
- */
 package com.walmart.ticket.utils;
 
 import java.util.UUID;
@@ -11,7 +8,6 @@ import com.walmart.ticket.model.Seat;
 import com.walmart.ticket.model.SeatHold;
 
 /**
- * @author DARPAN
  *
  */
 public class Helper {

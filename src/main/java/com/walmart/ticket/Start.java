@@ -11,7 +11,7 @@ import com.walmart.ticket.utils.Helper;
 public class Start {
 	public static void main(String[] args) throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("\t\t\t TicketService System");
+		System.out.println("\t\t\t TicketService Reservation");
 		System.out.println("\t\t\t ====================");
 		boolean loop = true;
 		String options = "\nOptions: \t1. start/reset \t2. Available Seats \t3. Request for Hold \t4. Reserve/commit \t5. Exit.";
@@ -139,18 +139,18 @@ public class Start {
 		/*
 		TicketService service1 = new TicketServiceImpl(v);
 		log.info(""+service1.numSeatsAvailable());
-		log.info(""+service1.findAndHoldSeats(4, "darpan@dp.com"));
+		log.info(""+service1.findAndHoldSeats(4, "john@doe.com"));
 		log.info(""+service1.numSeatsAvailable());
-		log.info(""+service1.findAndHoldSeats(12, "darpan@dp.com"));
+		log.info(""+service1.findAndHoldSeats(12, "john@doe.com"));
 		log.info(""+service1.numSeatsAvailable());
 		Thread.sleep(6000); // default seconds is 100, change it in less to test locally.
 		log.info("First: " + service1.numSeatsAvailable());
-		log.info(""+service1.findAndHoldSeats(22, "darpan@dp.com"));
+		log.info(""+service1.findAndHoldSeats(22, "john@doe.com"));
 		log.info("After 1 seat holding: " + service1.numSeatsAvailable());
 		
-		log.info(service1.reserveSeats(3, "darpan@dp.com"));
+		log.info(service1.reserveSeats(3, "john@doe.com"));
 		log.info("Reserving held seats: " + service1.numSeatsAvailable());
-		//log.info(service1.reserveSeats(2, "darpan@dp.com"));
+		//log.info(service1.reserveSeats(2, "john@doe.com"));
 		log.info(""+service1.numSeatsAvailable());
 		*/
 	}

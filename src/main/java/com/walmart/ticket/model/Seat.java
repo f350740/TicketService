@@ -1,7 +1,6 @@
 package com.walmart.ticket.model;
 /**
  * 
- * @author Darpan Shah
  *
  */
 public class Seat {

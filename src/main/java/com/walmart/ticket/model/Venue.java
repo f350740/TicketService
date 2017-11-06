@@ -3,8 +3,6 @@ package com.walmart.ticket.model;
 import java.util.Arrays;
 
 /**
- * Theatre Seating arrangement: assuming 0th row is last row(farthest from screen) in seating. 
- * @author Darpan Shah
  *
  */
 public class Venue {
@@ -72,7 +70,6 @@ public class Venue {
 			}
 			sb.append("\n");
 		}
-//		sb.append("[[ This side stage ]]");
 		return sb.toString().trim();
 	}
 }
